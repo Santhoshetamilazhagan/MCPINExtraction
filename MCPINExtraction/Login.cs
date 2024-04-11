@@ -64,21 +64,5 @@ namespace MCPINExtraction
 
         }
 
-        /*private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-            {
-                passwordTextBox.UseSystemPasswordChar = false; // Show password
-            }
-            else
-            {
-                passwordTextBox.UseSystemPasswordChar = true; // Hide password
-            }
-        }
-        */
-        /*private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            txtpassword.PasswordChar = pictureBox1.Click ? '\0' : '*';
-        }*/
     }
 }

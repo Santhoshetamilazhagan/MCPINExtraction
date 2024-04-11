@@ -30,6 +30,7 @@ namespace MCPINExtraction
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.Confirm_Password = new System.Windows.Forms.Label();
             this.txtconfirmpassword = new System.Windows.Forms.TextBox();
             this.label3regusername = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@ namespace MCPINExtraction
             this.txtusername = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GetStarted = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,22 @@ namespace MCPINExtraction
             this.panel1.Size = new System.Drawing.Size(805, 615);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(217, 538);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(365, 37);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Already Have a Account? Sign in";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Confirm_Password
             // 
@@ -110,9 +126,9 @@ namespace MCPINExtraction
             this.buttonSignup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSignup.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSignup.ForeColor = System.Drawing.Color.White;
-            this.buttonSignup.Location = new System.Drawing.Point(281, 461);
+            this.buttonSignup.Location = new System.Drawing.Point(291, 461);
             this.buttonSignup.Name = "buttonSignup";
-            this.buttonSignup.Size = new System.Drawing.Size(210, 60);
+            this.buttonSignup.Size = new System.Drawing.Size(200, 52);
             this.buttonSignup.TabIndex = 5;
             this.buttonSignup.Text = "SIGN UP";
             this.buttonSignup.UseVisualStyleBackColor = false;
@@ -141,7 +157,7 @@ namespace MCPINExtraction
             // 
             this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
             this.panel2.Controls.Add(this.GetStarted);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(15, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(778, 82);
             this.panel2.TabIndex = 0;
@@ -152,28 +168,12 @@ namespace MCPINExtraction
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GetStarted.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GetStarted.Location = new System.Drawing.Point(0, 0);
+            this.GetStarted.Location = new System.Drawing.Point(-3, 0);
             this.GetStarted.Name = "GetStarted";
-            this.GetStarted.Size = new System.Drawing.Size(805, 82);
+            this.GetStarted.Size = new System.Drawing.Size(781, 82);
             this.GetStarted.TabIndex = 0;
             this.GetStarted.Text = "GET STARTED!";
             this.GetStarted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(217, 538);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(365, 37);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Already Have a Account? Sign in";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Registration
             // 

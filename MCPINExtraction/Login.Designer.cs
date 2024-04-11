@@ -68,9 +68,9 @@ namespace MCPINExtraction
             this.Login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Login_button.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_button.ForeColor = System.Drawing.Color.White;
-            this.Login_button.Location = new System.Drawing.Point(314, 443);
+            this.Login_button.Location = new System.Drawing.Point(328, 443);
             this.Login_button.Name = "Login_button";
-            this.Login_button.Size = new System.Drawing.Size(228, 57);
+            this.Login_button.Size = new System.Drawing.Size(199, 50);
             this.Login_button.TabIndex = 14;
             this.Login_button.Text = "LOGIN";
             this.Login_button.UseVisualStyleBackColor = false;
@@ -121,7 +121,7 @@ namespace MCPINExtraction
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(223, 526);
             this.button1.Name = "button1";
