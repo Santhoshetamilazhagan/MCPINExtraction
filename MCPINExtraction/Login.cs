@@ -35,6 +35,7 @@ namespace MCPINExtraction
                     this.Hide();
                     Home home = new Home();
                     home.ShowDialog();
+                   
                 }
                 else
                 {
@@ -51,7 +52,7 @@ namespace MCPINExtraction
 
         private void Login_Load(object sender, EventArgs e)
         {
-            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\INTERNUSER03\source\repos\MCPINExtraction\MCPINExtraction\Database.mdf;Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\MCPINExtractor\MCPINExtraction\Database1.mdf;Integrated Security=True");
 
             cn.Open();
         }
