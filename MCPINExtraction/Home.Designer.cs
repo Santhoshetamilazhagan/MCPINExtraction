@@ -76,17 +76,17 @@ namespace MCPINExtraction
             // 
             // filePathTextBox
             // 
-            this.filePathTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filePathTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filePathTextBox.Location = new System.Drawing.Point(138, 326);
             this.filePathTextBox.Name = "filePathTextBox";
-            this.filePathTextBox.Size = new System.Drawing.Size(342, 26);
+            this.filePathTextBox.Size = new System.Drawing.Size(342, 24);
             this.filePathTextBox.TabIndex = 6;
             // 
             // SelectButton
             // 
             this.SelectButton.BackColor = System.Drawing.Color.FloralWhite;
             this.SelectButton.FlatAppearance.BorderSize = 0;
-            this.SelectButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectButton.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.SelectButton.Location = new System.Drawing.Point(505, 323);
             this.SelectButton.Name = "SelectButton";
@@ -98,11 +98,11 @@ namespace MCPINExtraction
             // 
             // ComboBoxPinPackage
             // 
-            this.ComboBoxPinPackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxPinPackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboBoxPinPackage.FormattingEnabled = true;
             this.ComboBoxPinPackage.Location = new System.Drawing.Point(351, 266);
             this.ComboBoxPinPackage.Name = "ComboBoxPinPackage";
-            this.ComboBoxPinPackage.Size = new System.Drawing.Size(121, 28);
+            this.ComboBoxPinPackage.Size = new System.Drawing.Size(121, 26);
             this.ComboBoxPinPackage.TabIndex = 4;
             // 
             // label2
@@ -117,11 +117,11 @@ namespace MCPINExtraction
             // 
             // ComboBoxMicrocontroller
             // 
-            this.ComboBoxMicrocontroller.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxMicrocontroller.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboBoxMicrocontroller.FormattingEnabled = true;
             this.ComboBoxMicrocontroller.Location = new System.Drawing.Point(351, 203);
             this.ComboBoxMicrocontroller.Name = "ComboBoxMicrocontroller";
-            this.ComboBoxMicrocontroller.Size = new System.Drawing.Size(121, 28);
+            this.ComboBoxMicrocontroller.Size = new System.Drawing.Size(121, 26);
             this.ComboBoxMicrocontroller.TabIndex = 2;
             this.ComboBoxMicrocontroller.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 

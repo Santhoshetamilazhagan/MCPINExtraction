@@ -76,6 +76,34 @@ namespace MCPINExtraction
             Login login = new Login();
             login.ShowDialog();
         }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox1.Checked == true)
+            {
+                txtpassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtpassword.UseSystemPasswordChar = true;
+            }
+
+        }
+
+        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox2.Checked == true)
+            {
+                txtconfirmpassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtconfirmpassword.UseSystemPasswordChar = true;
+            }
+
+        }
+
+       
     }
 }
 

@@ -29,14 +29,17 @@ namespace MCPINExtraction
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Login_button = new System.Windows.Forms.Button();
-            this.txtpassword = new System.Windows.Forms.TextBox();
-            this.txtusername = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.welcome = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.CheckBox1 = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.txtusername = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,25 +79,6 @@ namespace MCPINExtraction
             this.Login_button.UseVisualStyleBackColor = false;
             this.Login_button.Click += new System.EventHandler(this.Login_button_Click);
             // 
-            // txtpassword
-            // 
-            this.txtpassword.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(269, 313);
-            this.txtpassword.Multiline = true;
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(330, 39);
-            this.txtpassword.TabIndex = 13;
-            this.txtpassword.UseSystemPasswordChar = true;
-            // 
-            // txtusername
-            // 
-            this.txtusername.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.Location = new System.Drawing.Point(269, 196);
-            this.txtusername.Multiline = true;
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(331, 41);
-            this.txtusername.TabIndex = 12;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
@@ -131,18 +115,53 @@ namespace MCPINExtraction
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // CheckBox1
+            // 
+            this.CheckBox1.AutoSize = true;
+            this.CheckBox1.Location = new System.Drawing.Point(541, 390);
+            this.CheckBox1.Name = "CheckBox1";
+            this.CheckBox1.Size = new System.Drawing.Size(102, 17);
+            this.CheckBox1.TabIndex = 20;
+            this.CheckBox1.Text = "Show Password";
+            this.CheckBox1.UseVisualStyleBackColor = true;
+            this.CheckBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // txtusername
+            // 
+            this.txtusername.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.Location = new System.Drawing.Point(265, 195);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(331, 30);
+            this.txtusername.TabIndex = 22;
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Location = new System.Drawing.Point(265, 321);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(331, 30);
+            this.txtpassword.TabIndex = 23;
+            this.txtpassword.UseSystemPasswordChar = true;
+           
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(852, 583);
+            this.Controls.Add(this.txtpassword);
+            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.CheckBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Label3);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Login_button);
-            this.Controls.Add(this.txtpassword);
-            this.Controls.Add(this.txtusername);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
@@ -159,11 +178,13 @@ namespace MCPINExtraction
         private System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Label Label2;
         private System.Windows.Forms.Button Login_button;
-        private System.Windows.Forms.TextBox txtpassword;
-        private System.Windows.Forms.TextBox txtusername;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label welcome;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox CheckBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox txtusername;
+        private System.Windows.Forms.TextBox txtpassword;
     }
 }
 
