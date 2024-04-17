@@ -22,7 +22,6 @@ namespace MCPINExtraction
             InitializeComboBoxes();
             InitializeMicrocontrollerPinPackages(); // Initialize the pin packages   dictionary
             InitializeComponents();
-
         }
 
         private void InitializeComboBoxes()
@@ -33,25 +32,26 @@ namespace MCPINExtraction
             ComboBoxMicrocontroller.Items.Add("S32K146");
             ComboBoxMicrocontroller.Items.Add("S32K148");
             ComboBoxPinPackage.Enabled = false;
+        
+          
+
         }
         private void Home_Load(object sender, EventArgs e)
         {
-            
-
+           
         }
         private void InitializeMicrocontrollerPinPackages()
         {
             // Add pin packages for each microcontroller
             microcontrollerPinPackages["RH850F1K"] = new List<string> { "100 pins", "144 pins", "176 pins" };
-            microcontrollerPinPackages["CYT2B9_M4"] = new List<string> { "60 pins", "80   pins", "100 pins", "144 pins", "176 pins" };
-            microcontrollerPinPackages["S32K146"] = new List<string> { "64 pins", "100 pins", "144 pins" };
-            microcontrollerPinPackages["S32K148"] = new List<string> { "100 pins", "144 pins", "176 pins" };
+            microcontrollerPinPackages["CYT2B9_M4"] = new List<string> { "60 pins", "80 pins", "100 pins", "144 pins", "176 pins" };
+            microcontrollerPinPackages["S32K146"] = new List<string> { "64 pins","100 pins", "144 pins" };
+            microcontrollerPinPackages["S32K148"] = new List<string> { "100 pins","144 pins", "176 pins" };
 
         }
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedMicrocontroller = ComboBoxMicrocontroller.SelectedItem as
-           string;
+            string selectedMicrocontroller = ComboBoxMicrocontroller.SelectedItem as string;
             if (selectedMicrocontroller != null)
             {
                 // Ensure that the dictionary contains an entry for the selected  microcontroller
@@ -74,26 +74,28 @@ namespace MCPINExtraction
             else
             {
                 ComboBoxPinPackage.Enabled = false;
+               
             }
+
         }
+     
+
         private void InitializeComponents()
         {
             // Initialize selectButton
-            SelectButton = new Button();
-            SelectButton.Name = "selectButton"; // Change button name
-            SelectButton.Text = "Browse"; // Change button text
-            SelectButton.Click += new EventHandler(SelectButton_Click);
+           SelectButton = new Button();
+           SelectButton.Name = "SelectButton"; // Change button name
+           SelectButton.Text = "Browse"; // Change button text
+           SelectButton.Click += new EventHandler(SelectButton_Click);
+          
 
             // Initialize filePathTextBox
             Controls.Add(SelectButton);
 
         }
-
-
-      
-
         private void SelectButton_Click(object sender, EventArgs e)
         {
+       
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
             openFileDialog.FilterIndex = 1;
@@ -120,20 +122,9 @@ namespace MCPINExtraction
             Login back = new Login();
             back.Show();
 
-
         }
 
-        private void Login_button_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
+       private void panel2_Paint(object sender, PaintEventArgs e)
         {
             label3.Text = UserLogName.Username;
         }

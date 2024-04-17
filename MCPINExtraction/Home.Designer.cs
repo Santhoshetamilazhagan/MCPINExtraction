@@ -109,8 +109,7 @@ namespace MCPINExtraction
             this.label3.Size = new System.Drawing.Size(43, 20);
             this.label3.TabIndex = 30;
             this.label3.Text = "User";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
+            
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));

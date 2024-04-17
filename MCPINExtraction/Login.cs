@@ -13,49 +13,62 @@ namespace MCPINExtraction
 {
     public partial class Login : Form
     {
-        
-
-        SqlCommand cmd;
+      
         SqlConnection cn;
-        SqlDataReader dr;
         public Login()
         {
             InitializeComponent();
-
-
         }
 
         private void Login_button_Click(object sender, EventArgs e)
         {
-            
-
             if (txtpassword.Text != string.Empty || txtusername.Text != string.Empty)
             {
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\INTERNUSER03\source\repos\MCPINExtraction\MCPINExtraction\Database1.mdf;Integrated Security=True";
 
-                cmd = new SqlCommand("select * from LoginTable where username='" + txtusername.Text + "' and password='" + txtpassword.Text + "'", cn);
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    dr.Close();
-                    UserLogName.Username = txtusername.Text;
-                    this.Hide();
-                    Home home = new Home();
+                    string query = "SELECT * FROM LoginTable WHERE username = @username COLLATE Latin1_General_CS_AS AND password = @password COLLATE Latin1_General_CS_AS";
 
-                    home.ShowDialog();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", txtusername.Text);
+                        command.Parameters.AddWithValue("@password", txtpassword.Text);
 
+                        try
+                        {
+                            connection.Open();
+                            SqlDataReader reader = command.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                // Authentication successful
+                                MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                reader.Close();
+                                UserLogName.Username = txtusername.Text;
+                                this.Hide();
+                                Home home = new Home();
+                                home.ShowDialog();
+                            }
+                            else
+                            {
+                                // Authentication failed
+                                MessageBox.Show("Authentication failed. Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                reader.Close();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-                else
-                {
-                    dr.Close();
-                    MessageBox.Show("No Account avilable with this username and password ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
             }
             else
             {
-                MessageBox.Show("Please enter value in all field.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a value in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void Login_Load(object sender, EventArgs e)
@@ -87,10 +100,13 @@ namespace MCPINExtraction
 
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+    
 
 
     }
