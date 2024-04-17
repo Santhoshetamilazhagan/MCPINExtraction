@@ -13,6 +13,7 @@ namespace MCPINExtraction
 {
     public partial class Login : Form
     {
+        
 
         SqlCommand cmd;
         SqlConnection cn;
@@ -20,10 +21,14 @@ namespace MCPINExtraction
         public Login()
         {
             InitializeComponent();
+
+
         }
 
         private void Login_button_Click(object sender, EventArgs e)
         {
+            
+
             if (txtpassword.Text != string.Empty || txtusername.Text != string.Empty)
             {
 
@@ -32,6 +37,7 @@ namespace MCPINExtraction
                 if (dr.Read())
                 {
                     dr.Close();
+                    UserLogName.Username = txtusername.Text;
                     this.Hide();
                     Home home = new Home();
 
@@ -51,6 +57,7 @@ namespace MCPINExtraction
             }
         }
 
+
         private void Login_Load(object sender, EventArgs e)
         {
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\INTERNUSER03\source\repos\MCPINExtraction\MCPINExtraction\Database1.mdf;Integrated Security=True");
@@ -68,7 +75,7 @@ namespace MCPINExtraction
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(CheckBox1.Checked == true)
+            if (CheckBox1.Checked == true)
             {
                 txtpassword.UseSystemPasswordChar = false;
             }
@@ -79,6 +86,12 @@ namespace MCPINExtraction
 
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
     }
 }

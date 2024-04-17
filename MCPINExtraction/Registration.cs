@@ -56,6 +56,9 @@ namespace MCPINExtraction
                         cmd.Parameters.AddWithValue("password", txtpassword.Text);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Your Account is created . Please login now.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        Login login = new Login();
+                        login.ShowDialog();
                     }
                 }
                 else
@@ -103,7 +106,12 @@ namespace MCPINExtraction
 
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
     }
 }
 

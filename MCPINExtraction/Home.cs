@@ -36,6 +36,8 @@ namespace MCPINExtraction
         }
         private void Home_Load(object sender, EventArgs e)
         {
+            
+
         }
         private void InitializeMicrocontrollerPinPackages()
         {
@@ -107,5 +109,33 @@ namespace MCPINExtraction
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Back_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login back = new Login();
+            back.Show();
+
+
+        }
+
+        private void Login_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            label3.Text = UserLogName.Username;
+        }
     }
 }
