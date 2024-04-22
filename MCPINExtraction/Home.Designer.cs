@@ -109,7 +109,7 @@ namespace MCPINExtraction
             this.label3.Size = new System.Drawing.Size(43, 20);
             this.label3.TabIndex = 30;
             this.label3.Text = "User";
-            
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -134,6 +134,7 @@ namespace MCPINExtraction
             this.Generate_button.TabIndex = 28;
             this.Generate_button.Text = "GENERATE FILE";
             this.Generate_button.UseVisualStyleBackColor = false;
+            this.Generate_button.Click += new System.EventHandler(this.Generate_button_Click);
             // 
             // Back_button
             // 
@@ -158,6 +159,7 @@ namespace MCPINExtraction
             this.filePathTextBox.Name = "filePathTextBox";
             this.filePathTextBox.Size = new System.Drawing.Size(342, 24);
             this.filePathTextBox.TabIndex = 6;
+
             // 
             // SelectButton
             // 

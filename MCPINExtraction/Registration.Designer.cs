@@ -212,6 +212,7 @@ namespace MCPINExtraction
             this.GetStarted.TabIndex = 0;
             this.GetStarted.Text = "GET STARTED!";
             this.GetStarted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+           
             // 
             // Registration
             // 
