@@ -17,6 +17,7 @@ namespace MCPINExtraction
     {
         private Dictionary<string, List<string>> microcontrollerPinPackages = new Dictionary<string, List<string>>();
         private string selectedFileName;
+        //private List<string> downloadedFiles = new List<string>();
 
 
 
@@ -24,20 +25,22 @@ namespace MCPINExtraction
         {
             InitializeComponent();
             InitializeComboBoxes();
-            InitializeMicrocontrollerPinPackages(); // Initialize the pin packages   dictionary
+            InitializeMicrocontrollerPinPackages(); 
             InitializeComponents();
+         
         }
 
         private void InitializeComboBoxes()
         {
-            // Populate ComboBox with microcontroller names 
+            
             ComboBoxMicrocontroller.Items.Add("RH850F1K");
             ComboBoxMicrocontroller.Items.Add("CYT2B9_M4");
             ComboBoxMicrocontroller.Items.Add("S32K146");
             ComboBoxMicrocontroller.Items.Add("S32K148");
-            ComboBoxPinPackage.Enabled = false;
-        
-          
+            //ComboBoxPinPackage.Enabled = false;
+           // SelectButton.Enabled = false;
+
+
 
         }
         private void Home_Load(object sender, EventArgs e)
@@ -46,11 +49,12 @@ namespace MCPINExtraction
         }
         private void InitializeMicrocontrollerPinPackages()
         {
-            // Add pin packages for each microcontroller
+            
             microcontrollerPinPackages["RH850F1K"] = new List<string> { "100 pins", "144 pins", "176 pins" };
             microcontrollerPinPackages["CYT2B9_M4"] = new List<string> { "60 pins", "80 pins", "100 pins", "144 pins", "176 pins" };
             microcontrollerPinPackages["S32K146"] = new List<string> { "64 pins","100 pins", "144 pins" };
             microcontrollerPinPackages["S32K148"] = new List<string> { "100 pins","144 pins", "176 pins" };
+           // SelectButton.Enabled = false;
 
         }
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,32 +62,21 @@ namespace MCPINExtraction
             string selectedMicrocontroller = ComboBoxMicrocontroller.SelectedItem as string;
             if (selectedMicrocontroller != null)
             {
-                // Ensure that the dictionary contains an entry for the selected  microcontroller
-
+                // Ensure that the dictionary contains an entry for the selected microcontroller
                 if (microcontrollerPinPackages.TryGetValue(selectedMicrocontroller, out List<string> pinPackages))
-
                 {
                     // Clear previous items in the ComboBox
                     ComboBoxPinPackage.Items.Clear();
                     // Add pin packages for the selected microcontroller
                     ComboBoxPinPackage.Items.AddRange(pinPackages.ToArray());
                     ComboBoxPinPackage.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Pin packages not found for the selected  microcontroller.");
-
-                }
+                    SelectButton.Enabled = true;
+                        
+                 }                 
             }
-            else
-            {
-                ComboBoxPinPackage.Enabled = false;
-               
-            }
-
+           
+         
         }
-     
-
         private void InitializeComponents()
         {
             // Initialize selectButton
@@ -97,26 +90,57 @@ namespace MCPINExtraction
 
             // Initialize filePathTextBox
             Controls.Add(SelectButton);
+         //  Generate_button.Enabled = false;
 
         }
         private void SelectButton_Click(object sender, EventArgs e)
         {
-       
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-            openFileDialog.FilterIndex = 1;
-            openFileDialog.RestoreDirectory = true;
-
-            DialogResult result = openFileDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
+            if (ComboBoxMicrocontroller.SelectedIndex != -1 && ComboBoxPinPackage.SelectedIndex != -1)
             {
+                //SelectButton.Enabled = true; // Enable the Browse button
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
 
-              
-                selectedFileName = openFileDialog.FileName;
-                filePathTextBox.Text = selectedFileName;
+                DialogResult result = openFileDialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    selectedFileName = openFileDialog.FileName;
+                    filePathTextBox.Text = selectedFileName;
+
+                    // Enable the Generate button only if the CSV file is selected
+                    if (!string.IsNullOrEmpty(selectedFileName))
+                    {
+                        Generate_button.Enabled = true;
+                    }
+                    
+                    else
+                    {
+                        Generate_button.Enabled = false;
+                    }
+                }
 
             }
+           else  if (ComboBoxMicrocontroller.SelectedIndex != -1 && ComboBoxPinPackage.SelectedIndex != 1)
+            {
+                MessageBox.Show("Please Select the required Pinpackage." ,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else if (ComboBoxMicrocontroller.SelectedIndex != 1 && ComboBoxPinPackage.SelectedIndex != -1)
+            {
+                MessageBox.Show(" Please Select the required Microcontroller.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+           //else if (ComboBoxMicrocontroller.SelectedIndex != 1 && ComboBoxPinPackage.SelectedIndex != 1)
+           else
+            {
+                //SelectButton.Enabled = false; // Disable the Browse button
+                //Generate_button.Enabled = false; // Disable the Generate button if selections are not complete
+                MessageBox.Show("Please select both Microcontroller and Pin package.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -137,6 +161,11 @@ namespace MCPINExtraction
             label3.Text = UserLogName.Username;
         }
 
+
+
+
+
+        private string generatedCsFilePath;
         private void Generate_button_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(selectedFileName))
@@ -151,10 +180,24 @@ namespace MCPINExtraction
                 return;
             }
 
-            List<string[]> csvData = ReadCsvFile(selectedFileName);
+            if (Path.GetExtension(selectedFileName) != ".csv")
+            {
+                MessageBox.Show("Please select a CSV file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Generate C# file
-            using (StreamWriter writer = new StreamWriter("GeneratedCsvData.cs"))
+            // Check if CSV file exists
+            if (!File.Exists(selectedFileName))
+            {
+                MessageBox.Show("Selected CSV file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            List<string[]> csvData = ReadCsvFile(selectedFileName);
+            string generatedCsFileName = Path.Combine(Path.GetDirectoryName(selectedFileName), "GeneratedCsvData.cs");
+            generatedCsFilePath = generatedCsFileName;
+
+            using (StreamWriter writer = new StreamWriter(generatedCsFileName))
             {
                 writer.WriteLine("using System;");
                 writer.WriteLine("using System.Collections.Generic;");
@@ -187,11 +230,19 @@ namespace MCPINExtraction
             }
 
             MessageBox.Show(".cs file generated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          Download_button.Visible = true;
         }
+
 
         private List<string[]> ReadCsvFile(string filePath)
         {
             List<string[]> csvData = new List<string[]>();
+
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("No file selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return csvData;
+            }
 
             try
             {
@@ -213,7 +264,46 @@ namespace MCPINExtraction
             return csvData;
         }
 
+        private void Upload_button_Click(object sender, EventArgs e)
+        {
+            if (ComboBoxMicrocontroller.SelectedIndex != -1 && ComboBoxPinPackage.SelectedIndex != -1 && (!string.IsNullOrEmpty(selectedFileName)))
+            {
+
+
+                MessageBox.Show("File uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
+            else
+            {
+                MessageBox.Show("  No File is uploaded!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Download_button_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(generatedCsFilePath) && File.Exists(generatedCsFilePath) && Upload_button.Enabled)
+            {
+                // Offer the file for download
+                System.Diagnostics.Process.Start(generatedCsFilePath);
+            }
+            else
+            {
+                MessageBox.Show("The generated .cs file is not available for download.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         
+
+        // private void ShowDownloadedFiles()
+        // {
+        //    listBoxDownloadedFiles.DataSource = null;
+        //     listBoxDownloadedFiles.DataSource = downloadedFiles;
+        // }
+
+
+
+
+
+
     }
 }
     

@@ -34,10 +34,12 @@ namespace MCPINExtraction
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Download_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Generate_button = new System.Windows.Forms.Button();
+            this.Upload_button = new System.Windows.Forms.Button();
             this.Back_button = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Generate_button = new System.Windows.Forms.Button();
             this.filePathTextBox = new System.Windows.Forms.TextBox();
             this.SelectButton = new System.Windows.Forms.Button();
             this.ComboBoxPinPackage = new System.Windows.Forms.ComboBox();
@@ -84,10 +86,12 @@ namespace MCPINExtraction
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.Download_button);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.Generate_button);
+            this.panel2.Controls.Add(this.Upload_button);
             this.panel2.Controls.Add(this.Back_button);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.Generate_button);
             this.panel2.Controls.Add(this.filePathTextBox);
             this.panel2.Controls.Add(this.SelectButton);
             this.panel2.Controls.Add(this.ComboBoxPinPackage);
@@ -100,41 +104,39 @@ namespace MCPINExtraction
             this.panel2.TabIndex = 0;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // label3
+            // Download_button
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(45, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 20);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "User";
+            this.Download_button.BackColor = System.Drawing.Color.FloralWhite;
+            this.Download_button.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Download_button.Location = new System.Drawing.Point(560, 358);
+            this.Download_button.Name = "Download_button";
+            this.Download_button.Size = new System.Drawing.Size(99, 29);
+            this.Download_button.TabIndex = 32;
+            this.Download_button.Text = "Download";
+            this.Download_button.UseVisualStyleBackColor = false;
+            this.Download_button.Click += new System.EventHandler(this.Download_button_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(27, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(68, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
-            // Generate_button
+            // Upload_button
             // 
-            this.Generate_button.BackColor = System.Drawing.Color.DodgerBlue;
-            this.Generate_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Generate_button.FlatAppearance.BorderSize = 0;
-            this.Generate_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Generate_button.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Generate_button.ForeColor = System.Drawing.Color.White;
-            this.Generate_button.Location = new System.Drawing.Point(310, 407);
-            this.Generate_button.Name = "Generate_button";
-            this.Generate_button.Size = new System.Drawing.Size(261, 42);
-            this.Generate_button.TabIndex = 28;
-            this.Generate_button.Text = "GENERATE FILE";
-            this.Generate_button.UseVisualStyleBackColor = false;
-            this.Generate_button.Click += new System.EventHandler(this.Generate_button_Click);
+            this.Upload_button.BackColor = System.Drawing.Color.FloralWhite;
+            this.Upload_button.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Upload_button.Location = new System.Drawing.Point(642, 272);
+            this.Upload_button.Name = "Upload_button";
+            this.Upload_button.Size = new System.Drawing.Size(99, 29);
+            this.Upload_button.TabIndex = 31;
+            this.Upload_button.Text = "Upload";
+            this.Upload_button.UseVisualStyleBackColor = false;
+            this.Upload_button.Click += new System.EventHandler(this.Upload_button_Click);
             // 
             // Back_button
             // 
@@ -144,22 +146,47 @@ namespace MCPINExtraction
             this.Back_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Back_button.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Back_button.ForeColor = System.Drawing.Color.White;
-            this.Back_button.Location = new System.Drawing.Point(391, 492);
+            this.Back_button.Location = new System.Drawing.Point(10, 383);
             this.Back_button.Name = "Back_button";
-            this.Back_button.Size = new System.Drawing.Size(94, 35);
+            this.Back_button.Size = new System.Drawing.Size(60, 29);
             this.Back_button.TabIndex = 27;
             this.Back_button.Text = "BACK";
             this.Back_button.UseVisualStyleBackColor = false;
             this.Back_button.Click += new System.EventHandler(this.Back_button_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(27, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 20);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "User";
+            // 
+            // Generate_button
+            // 
+            this.Generate_button.BackColor = System.Drawing.Color.DodgerBlue;
+            this.Generate_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Generate_button.FlatAppearance.BorderSize = 0;
+            this.Generate_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Generate_button.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Generate_button.ForeColor = System.Drawing.Color.White;
+            this.Generate_button.Location = new System.Drawing.Point(348, 358);
+            this.Generate_button.Name = "Generate_button";
+            this.Generate_button.Size = new System.Drawing.Size(138, 29);
+            this.Generate_button.TabIndex = 28;
+            this.Generate_button.Text = "GENERATE FILE";
+            this.Generate_button.UseVisualStyleBackColor = false;
+            this.Generate_button.Click += new System.EventHandler(this.Generate_button_Click);
+            // 
             // filePathTextBox
             // 
             this.filePathTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filePathTextBox.Location = new System.Drawing.Point(143, 277);
+            this.filePathTextBox.Location = new System.Drawing.Point(278, 279);
             this.filePathTextBox.Name = "filePathTextBox";
             this.filePathTextBox.Size = new System.Drawing.Size(342, 24);
             this.filePathTextBox.TabIndex = 6;
-
             // 
             // SelectButton
             // 
@@ -167,7 +194,7 @@ namespace MCPINExtraction
             this.SelectButton.FlatAppearance.BorderSize = 0;
             this.SelectButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SelectButton.Location = new System.Drawing.Point(526, 272);
+            this.SelectButton.Location = new System.Drawing.Point(155, 274);
             this.SelectButton.Name = "SelectButton";
             this.SelectButton.Size = new System.Drawing.Size(99, 29);
             this.SelectButton.TabIndex = 5;
@@ -249,5 +276,7 @@ namespace MCPINExtraction
         private System.Windows.Forms.Button Generate_button;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button Upload_button;
+        private System.Windows.Forms.Button Download_button;
     }
 }
